@@ -66,7 +66,7 @@
     align-items: center;
     font-size: .8rem;
     font-weight: 600;
-    gap: .5rem;
+    gap: 1rem;
 }
 
 .navbar--nav-action-btn {
@@ -200,7 +200,7 @@
         flex-direction: column;
         width: 80%;
         /* background-color: red; */
-        box-shadow: 0 0 50px 2px rgb(241, 241, 241);
+        box-shadow: 0 0 50px 2px rgb(161, 161, 161);
         backdrop-filter: blur(15PX);
         padding: 1rem;
         border-radius: 1rem;    
@@ -272,3 +272,7 @@
     }
 }
 
+
+.username {
+    font-size: 1rem;
+}

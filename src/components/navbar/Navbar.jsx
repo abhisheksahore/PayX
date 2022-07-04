@@ -398,7 +398,7 @@ const Navbar = () => {
                                 <Link to='/signup' style={{textDecoration: "none"}}><div className="navbar--nav-action-btn">Sign up</div></Link>
                             </div>:
                             <div className="navbar--nav-action" >
-                                <div className='username'>{userContext.userData[1]}</div>
+                                <div className='username'>hi, {userContext.userData[1].toLowerCase()}</div>
                                 <div className="navbar--nav-action-btn" onClick={logout}>Logout</div>
                             </div>
                         }
