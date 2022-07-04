@@ -1,0 +1,116 @@
+.main-container {
+    display: flex;
+    width: 90%;
+    padding: 0rem;
+    margin: 3rem auto;
+    justify-content: center;
+}
+
+.main-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-iphone-mockup-container {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-register-btn {
+    padding: 1rem 1.5rem;
+    background-color: #134AEF;
+    background: linear-gradient(to right, rgba(255, 0, 0, 0.711), rgba(255, 0, 255, 0.768)); 
+    color: white;
+    font-size: 1rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.cta-sales-btn {
+    padding: 1rem 1.5rem;
+    background-color: #000;
+    color: white;
+    font-size: 1rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.hero-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-width: 270px;
+}
+
+.heading {
+    font-size: 2.6rem;
+    font-weight: 900;
+
+}
+
+.hero-sub-heading {
+    font-size: .9rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+}
+
+@media (min-width: 300px) and (max-width: 900px) {
+    .main-wrapper {
+        justify-content: center;
+    } 
+
+    .heading {
+        text-align: center;
+
+    }
+
+    .hero-section-wrapper {
+        width: 70%;
+    }
+
+    .main-container {
+        margin: 3rem auto;
+    }
+}
+
+@media (min-width: 900px) {
+    .main-wrapper {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5rem;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        max-width: 1000px;
+    }
+
+    .main-iphone-mockup-container {
+        order: 2;
+
+    }
+
+    .hero-section-wrapper {
+        width: 40%;
+    }
+
+    .hero-cta {
+        justify-content: flex-start;
+        flex-direction: row;
+    }
+}

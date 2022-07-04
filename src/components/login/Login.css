@@ -1,0 +1,93 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    padding: 0 2rem;
+}
+
+/* .login-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#FF635D, #FF55FC);
+    clip-path: circle(50% at right 30%);
+} */
+
+
+.login-wrapper {
+    width: 20rem;
+    min-width: 290px;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.501);
+    /* box-shadow: 0 0 10px 1px rgb(181, 181, 181); */
+    border-radius: 1rem;
+    padding: 4rem;
+    position: relative;
+    backdrop-filter: blur(5px);
+}
+
+.login-logo {
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.login-form {
+    gap: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form div p {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgb(91, 91, 91);
+    font-weight: 600;
+}
+.login-form div input::placeholder {
+    letter-spacing: 1px;
+}
+
+.login-form div input{
+    padding: .75rem;
+    width: 90%;
+    border-radius: .4rem;
+    outline: none;
+    border: 1px solid rgb(236, 236, 236);
+    box-shadow: 2px 2px 3px 0px rgb(243, 243, 243);
+    background-color: white;
+    letter-spacing: 1px;
+    font-size: .9rem;
+}
+
+.login-btn {
+    padding: 1rem 1.5rem;
+    background: linear-gradient(to right, rgba(255, 0, 0, 0.711), rgba(255, 0, 255, 0.768));
+    color: white;
+    border-radius: .75rem;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+.signup-instead {
+    margin-top: 2rem;
+    font-size: .9rem;
+    letter-spacing: 1px;
+    font-weight: 900;
+    text-align: center;
+    color: rgb(87, 86, 86);
+}
+.signup-instead span {
+    color: rgba(72, 0, 255, 0.711);
+    cursor: pointer;
+    font-size: .95rem;
+}
