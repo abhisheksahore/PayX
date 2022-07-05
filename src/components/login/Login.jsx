@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../../context/userContext';
 import './Login.css';
+import validator from 'validator'
 
 const Login = () => {
     const userContext = useContext(UserContext);
@@ -14,22 +15,30 @@ const Login = () => {
 
     const login = () => {
         setError('')
-        if (email === '' || !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.toLowerCase())) {
-            setError(prev => prev + ' ' + 'Put a valid email.\n') 
+        let errorMessage = '';
+        if (email === '' || !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.toLowerCase()) || !validator.isEmail(email) ) {
+            errorMessage += ' ' + 'Put a valid email.\n'; 
         }  if (password === '' || password.length < 6) {
-            setError(prev => prev + ' ' + "Put a valid password.\n")
+            errorMessage += ' ' + "Put a valid password.\n";
         }
 
-        let userData = localStorage.getItem(email);
-        if (userData) {
-            userData = userData.split(',');
-            if (email === userData[0] && password === userData[2]) {
-                userContext.setUserData(userData);
-                localStorage.setItem('loggedInUser', userData);
-                navigate('/');
-            } 
+        console.log(errorMessage);
+        if (errorMessage === "") {
+            let userData = localStorage.getItem(email);
+            if (userData) {
+                userData = userData.split(',');
+                if (email === userData[0] && password === userData[2]) {
+                    userContext.setUserData(userData);
+                    localStorage.setItem('loggedInUser', userData);
+                    navigate('/');
+                } else {
+                    setError(prev => "Incorrect password.\n")
+                } 
+            } else {
+                setError( prev => prev + " " + 'Incorrect email.\n')
+            }
         } else {
-            setError( prev => prev + " " + 'incorrect email\n')
+            setError(prev => errorMessage)
         }
     }
 

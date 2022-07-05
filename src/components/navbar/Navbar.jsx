@@ -9,7 +9,6 @@ import './Navbar.css'
 
 const Navbar = () => {
     const userContext = useContext(UserContext);
-    console.log(userContext);
     const hamburgerRef = useRef(null);
     const menuRef = useRef(null);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -322,6 +321,7 @@ const Navbar = () => {
 
     const logout = () => {
         userContext.setUserData([]);
+        localStorage.removeItem('loggedInUser');
     }
 
     useEffect(() => {
@@ -330,7 +330,6 @@ const Navbar = () => {
         } else {
             menuRef.current.classList.remove('slideMenuOnScreen');
         }
-        console.log(menuRef.current)
     }, [menuOpen])
     
     useEffect(() => {
@@ -338,20 +337,15 @@ const Navbar = () => {
         if (loggedInUser && loggedInUser.length !== 0) {
             userContext.setUserData(loggedInUser.split(','));
         }
-        console.log(userContext.userData)
-        console.log(typeof userContext.userData)
     }, [])
     
 
     const toggleMenu = () => {
-        console.log(hamburgerRef.current);
         hamburgerRef.current.classList.toggle('open')
         if (hamburgerRef.current.classList.contains('open')) {
             setMenuOpen(true);
-            console.log('open')
         } else {
             setMenuOpen(false);
-            console.log('close')
         }
 
     }

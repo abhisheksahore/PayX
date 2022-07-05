@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../../context/userContext';
+import validator from 'validator';
 
 const Signup = () => {
 
@@ -14,19 +15,31 @@ const Signup = () => {
     const [error, setError] = useState('');
 
     const signup = () => {
-        setError('')
-        if (name === '') {
-            setError(prev => prev + ' ' + "Put a valid name.\n")
-        } if (email === '' || !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.toLowerCase())) {
-            setError(prev => prev + ' ' + 'Put a valid email.\n') 
+        setError(prev => '')
+        let errorMessage = '';
+        console.log(validator.isAlpha(name, 'en-US', {ignore: ' '}))
+        if (name === '' || !validator.isAlpha(name,  'en-US', {ignore: ' '})) {
+            errorMessage += ' ' + "Put a valid name.\n";
+        } if (email === '' || !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.toLowerCase()) || !validator.isEmail(email)) {
+            errorMessage += ' ' + 'Put a valid email.\n';
         }  if (password === '' || password.length < 6) {
-            setError(prev => prev + ' ' + "Put a valid password.\n")
+            errorMessage += ' ' + "Put a valid password.\n";
+        }
+        
+        if (errorMessage === '') {
+            const emailExists = localStorage.getItem(email);
+            if (emailExists) {
+                setError(prev => "Email already exists.");
+            } else {
+                localStorage.setItem(email, `${email.trim()},${name.trim()},${password.trim()}`)
+                localStorage.setItem('loggedInUser', `${email.trim()},${name.trim()},${password.trim()}`.split(','))
+                userContext.setUserData(`${email.trim()},${name.trim()},${password.trim()}`.split(','));
+                navigate('/');
+            }
+        } else {
+            setError(prev => errorMessage);
         }
 
-        localStorage.setItem(email, `${email},${name},${password}`)
-        localStorage.setItem('loggedInUser', `${email},${name},${password}`.split(','))
-        userContext.setUserData(`${email},${name},${password}`.split(','));
-        navigate('/');
     }
 
 

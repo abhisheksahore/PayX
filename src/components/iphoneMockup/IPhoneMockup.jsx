@@ -13,7 +13,6 @@ const IPhoneMockup = (props) => {
         const removeInterval = setInterval(() => {
             const now = new Date()
             const timeStr = `${now.getHours()}:${now.getMinutes()}`
-            console.log(timeStr)
             setTime(timeStr)
         }, 60000);
         return () => {

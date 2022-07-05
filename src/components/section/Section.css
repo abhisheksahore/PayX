@@ -74,6 +74,8 @@
 }
 
 .icon-wrapper {
+    display: flex;
+    justify-content: center;
     max-width: 300px;
 }
 .icon-wrapper > img {
