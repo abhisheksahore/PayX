@@ -22,7 +22,7 @@ const Signup = () => {
             errorMessage += ' ' + "Put a valid name.\n";
         } if (email === '' || !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.toLowerCase()) || !validator.isEmail(email)) {
             errorMessage += ' ' + 'Put a valid email.\n';
-        }  if (password === '' || password.length < 6) {
+        }  if (password === '' || password.length < 6 || password.includes(',')) {
             errorMessage += ' ' + "Put a valid password.\n";
         }
         
